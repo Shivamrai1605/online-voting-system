@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Voting System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        .candidate {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .candidate input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .message {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vote for Your Candidate</h1>
+        <form id="voteForm">
+            <div class="candidate">
+                <input type="radio" id="candidate1" name="candidate" value="Candidate 1">
+                <label for="candidate1">Candidate 1</label>
+            </div>
+            <div class="candidate">
+                <input type="radio" id="candidate2" name="candidate" value="Candidate 2">
+                <label for="candidate2">Candidate 2</label>
+            </div>
+            <div class="candidate">
+                <input type="radio" id="candidate3" name="candidate" value="Candidate 3">
+                <label for="candidate3">Candidate 3</label>
+            </div>
+            <button type="submit">Submit Vote</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+    <script>
+        document.getElementById('voteForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const selected = document.querySelector('input[name="candidate"]:checked');
+            const message = document.getElementById('message');
+            if (selected) {
+                message.textContent = `Thank you for voting for ${selected.value}!`;
+                message.style.color = 'green';
+            } else {
+                message.textContent = 'Please select a candidate to vote.';
+                message.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
